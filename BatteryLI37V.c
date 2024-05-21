@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <math.h>
+#include "MinUnit.h"
 #include "BatteryLI37V.h"
 
 // interpolation with polynom of degree 5
