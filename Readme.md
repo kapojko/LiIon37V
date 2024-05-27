@@ -1,4 +1,4 @@
-# BatteryLI37V
+# LiIon37V
 
 Platform-agnostic library for processing Li-Ion (polymer) 3.7V batteries.
 
@@ -10,7 +10,7 @@ The project requires the following dependencies:
 
 ## Testing
 
-Integrated unit-testing is implemented using *BatteryLI37V_Test.c* files. Tests are compiled and run by *CTest* and automated using GitHub Actions.
+Integrated unit-testing is implemented using *LiIon37V_Test.c* files. Tests are compiled and run by *CTest* and automated using GitHub Actions.
 
 ## Author
 

@@ -1,10 +1,10 @@
 #ifdef TESTING
 
 #include <stdio.h>
-#include "BatteryLI37V.h"
+#include "LiIon37V.h"
 
 int main(void) {
-    const char *unitTestResult = BatteryLI37V_UnitTest();
+    const char *unitTestResult = LiIon37V_UnitTest();
     if (unitTestResult == 0) {
         printf("UNIT TEST PASSED\n");
         return 0;

@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "MinUnit.h"
-#include "BatteryLI37V.h"
+#include "LiIon37V.h"
 
 // interpolation with polynom of degree 5
 #define COEFF_COUNT 5
@@ -25,7 +25,7 @@ static float clipf(float value, float min, float max) {
     }
 }
 
-float BatteryLI37V_GetRemainingPct(float voltage) {
+float LiIon37V_GetRemainingPct(float voltage) {
     float ret;
     if (voltage > VOLTAGE_MAX) {
         ret = 100.0;
@@ -42,20 +42,20 @@ float BatteryLI37V_GetRemainingPct(float voltage) {
     return clipf(ret, 0.0f, 100.0f);
 }
 
-const char *BatteryLI37V_UnitTest(void) {
+const char *LiIon37V_UnitTest(void) {
     float chargeLevel;
 
     // Test battery level for INA voltage
-    chargeLevel = BatteryLI37V_GetRemainingPct(4.0f);
+    chargeLevel = LiIon37V_GetRemainingPct(4.0f);
     mu_assert("Battery remaining for 4.0 should be 100.0", approxEqual(chargeLevel, 100.0f, 5.0f));
 
-    chargeLevel = BatteryLI37V_GetRemainingPct(3.5f);
+    chargeLevel = LiIon37V_GetRemainingPct(3.5f);
     mu_assert("Battery remaining for 3.5 should be 35.0", approxEqual(chargeLevel, 35.0f, 5.0f));
 
-    chargeLevel = BatteryLI37V_GetRemainingPct(3.4f);
+    chargeLevel = LiIon37V_GetRemainingPct(3.4f);
     mu_assert("Battery remaining for 3.4 should be 18.0", approxEqual(chargeLevel, 18.0f, 5.0f));
 
-    chargeLevel = BatteryLI37V_GetRemainingPct(3.2f);
+    chargeLevel = LiIon37V_GetRemainingPct(3.2f);
     mu_assert("Battery remaining for 3.2 should be 0.0", approxEqual(chargeLevel, 0.0f, 5.0f));
 
     return 0;
