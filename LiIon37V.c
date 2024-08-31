@@ -113,16 +113,16 @@ const char *LiIon37V_UnitTest(void) {
 
     // Test battery level for INA voltage
     chargeLevel = LiIon37V_GetBatteryLevel(4.0f);
-    mu_assert("Battery remaining for 4.0 should be 100.0", approxEqual(chargeLevel, 100.0f, 5.0f));
+    mu_assert("Battery level for 4.0 should be 100.0", approxEqual(chargeLevel, 100.0f, 5.0f));
 
     chargeLevel = LiIon37V_GetBatteryLevel(3.5f);
-    mu_assert("Battery remaining for 3.5 should be 35.0", approxEqual(chargeLevel, 35.0f, 5.0f));
+    mu_assert("Battery level for 3.5 should be 35.0", approxEqual(chargeLevel, 35.0f, 5.0f));
 
     chargeLevel = LiIon37V_GetBatteryLevel(3.4f);
-    mu_assert("Battery remaining for 3.4 should be 18.0", approxEqual(chargeLevel, 18.0f, 5.0f));
+    mu_assert("Battery level for 3.4 should be 18.0", approxEqual(chargeLevel, 18.0f, 5.0f));
 
     chargeLevel = LiIon37V_GetBatteryLevel(3.2f);
-    mu_assert("Battery remaining for 3.2 should be 0.0", approxEqual(chargeLevel, 0.0f, 5.0f));
+    mu_assert("Battery level for 3.2 should be 0.0", approxEqual(chargeLevel, 0.0f, 5.0f));
 
     // TODO: test colors
 
