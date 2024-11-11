@@ -1,5 +1,4 @@
 #include <stdbool.h>
-#include <math.h>
 #include "MinUnit.h"
 #include "LiIon37V.h"
 
@@ -11,8 +10,16 @@
 const float coef[COEFF_COUNT] = { 758465.7587582349f, -440899.8844070132f, 127458.7786068192f, -18326.5357068361f, 1048.7699925162f };
 const float intercept = -519074.7161935132f;
 
+static float floatAbs(float value) {
+    if (value < 0.0f) {
+        return -value;
+    } else {
+        return value;
+    }
+}
+
 static bool approxEqual(float a, float b, float epsilon) {
-    return fabsf(a - b) < epsilon;
+    return floatAbs(a - b) < epsilon;
 }
 
 static float clipf(float value, float min, float max) {
@@ -72,6 +79,14 @@ static void hsvToRgb(float h, float s, float v, float *r, float *g, float *b) {
     }
 }
 
+static float intPow(float x, int n) {
+    float ret = 1.0f;
+    for (int i = 0; i < n; ++i) {
+        ret *= x;
+    }
+    return ret;
+}
+
 float LiIon37V_GetBatteryLevel(float voltage) {
     float ret;
     if (voltage > VOLTAGE_MAX) {
@@ -82,7 +97,7 @@ float LiIon37V_GetBatteryLevel(float voltage) {
         ret = intercept;
 
         for (int power = 0; power < COEFF_COUNT; ++power) {
-            ret += powf(voltage, power + 1) * coef[power];
+            ret += intPow(voltage, power + 1) * coef[power];
         }
     }
 
